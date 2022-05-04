@@ -1,5 +1,5 @@
 import 'package:application/src/colors/colors.dart';
-import 'package:application/src/widgets/back_button.dart';
+import 'package:application/src/features/presentation/widgets/back_button.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {

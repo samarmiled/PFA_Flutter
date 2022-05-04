@@ -1,5 +1,5 @@
 import 'package:application/src/colors/colors.dart';
-import 'package:application/src/widgets/back_button.dart';
+import 'package:application/src/features/presentation/widgets/back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -150,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
       margin: EdgeInsets.only(top: 30.0),
       child: RaisedButton(
         onPressed: () {
-          Navigator.pushNamed(context, 'login');
+          Navigator.pushNamed(context, 'root_app');
         },
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
