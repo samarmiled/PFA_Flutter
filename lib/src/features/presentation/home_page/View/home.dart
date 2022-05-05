@@ -171,7 +171,9 @@ class _HomePageState extends State<HomePage> {
                     !populars[index]["is_favorited"];
               });
             },
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, 'restaurant-detail');
+            },
           ),
         ),
       )),

@@ -1,5 +1,6 @@
 import 'package:application/src/colors/color.dart';
 import 'package:application/src/features/presentation/explore_page/View/explore.dart';
+import 'package:application/src/features/presentation/profile_page/View/profile_page.dart';
 import 'package:application/src/features/presentation/widgets/bottombar_item.dart';
 import 'package:application/utils/constant.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
     },
     {
       "icon": "assets/icons/profile.svg",
-      "page": Container(),
+      "page": ProfilePage(),
     },
   ];
 
