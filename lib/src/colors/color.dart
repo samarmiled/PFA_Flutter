@@ -17,7 +17,7 @@ const labelColor = Color(0xFF8A8989);
 const actionColor = Color(0xFFe54140);
 const buttonColor = Color(0xFFcdacf9);
 const cardColor = Colors.white;
-
+const bgGreyPgae = Color.fromRGBO(247, 248, 250, 1.0);
 const yellow = Color(0xFFffcb66);
 const green = Color(0xFFa2e1a6);
 const pink = Color(0xFFf5bde8);

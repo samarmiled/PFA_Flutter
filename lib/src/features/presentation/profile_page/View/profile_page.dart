@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _header() {
     return Container(
-      height: 250,
+      height: 200,
       color: bgGrey,
       padding: EdgeInsets.all(40),
       margin: EdgeInsets.only(top: 10),

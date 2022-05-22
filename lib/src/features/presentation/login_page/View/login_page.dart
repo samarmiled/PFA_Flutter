@@ -1,7 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:application/src/colors/colors.dart';
 import 'package:application/src/features/presentation/widgets/back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,6 +12,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -117,7 +122,8 @@ class _LoginPageState extends State<LoginPage> {
       decoration: BoxDecoration(
           color: Color.fromRGBO(142, 142, 147, 1.2),
           borderRadius: BorderRadius.circular(25.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _email,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: 'Email',
@@ -134,7 +140,8 @@ class _LoginPageState extends State<LoginPage> {
       decoration: BoxDecoration(
           color: Color.fromRGBO(142, 142, 147, 1.2),
           borderRadius: BorderRadius.circular(25.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _password,
         obscureText: true,
         decoration: InputDecoration(
             hintText: 'Password',
@@ -150,7 +157,7 @@ class _LoginPageState extends State<LoginPage> {
       margin: EdgeInsets.only(top: 30.0),
       child: RaisedButton(
         onPressed: () {
-          Navigator.pushNamed(context, 'root_app');
+          LoginUser();
         },
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
@@ -166,5 +173,31 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  Future LoginUser() async {
+    //var ApiURL = "http://192.168.1.10/php-auth-api-master/login.php";
+
+    String email1 = "samarmiled2.com";
+    String password1 = "samar1234";
+    if ((email1 != _email.text) && (password1 != _password.text)) {
+      Fluttertoast.showToast(
+          msg: "Please Enter a valid credentials",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.black,
+          textColor: Colors.white // Also possible "TOP" and "CENTER"
+          );
+    } else {
+      print("succès");
+      Fluttertoast.showToast(
+          msg: "Login Successfully!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.black,
+          textColor: Colors.white // Also possible "TOP" and "CENTER"
+          );
+      Navigator.pushNamed(context, "root_app");
+    }
   }
 }

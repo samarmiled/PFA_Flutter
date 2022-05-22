@@ -1,5 +1,7 @@
 import 'package:application/src/colors/color.dart';
-import 'package:application/src/features/presentation/explore_page/View/explore.dart';
+import 'package:application/src/features/presentation/favourite_page/View/favourite_page.dart';
+import 'package:application/src/features/presentation/order_page/View/empty.dart';
+import 'package:application/src/features/presentation/order_page/View/order_page.dart';
 import 'package:application/src/features/presentation/profile_page/View/profile_page.dart';
 import 'package:application/src/features/presentation/widgets/bottombar_item.dart';
 import 'package:application/utils/constant.dart';
@@ -18,16 +20,16 @@ class _RootAppState extends State<RootApp> with TickerProviderStateMixin {
   int activeTabIndex = 1;
   List barItems = [
     {
-      "icon": "assets/icons/search.svg",
-      "page": const ExplorePage(),
+      "icon": "assets/icons/cart.svg",
+      "page": EmptyOrder(),
     },
     {
       "icon": "assets/icons/home.svg",
       "page": const HomePage(),
     },
     {
-      "icon": "assets/icons/cart.svg",
-      "page": const ExplorePage(),
+      "icon": "assets/icons/bookmark.svg",
+      "page": FavouritePage(),
     },
     {
       "icon": "assets/icons/profile.svg",

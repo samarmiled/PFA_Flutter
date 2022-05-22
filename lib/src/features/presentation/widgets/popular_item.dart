@@ -96,29 +96,24 @@ class PopularItem extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        CustomImage(
-                          data["creator"]["image"],
-                          width: 25,
-                          height: 25,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
+                        
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                             
                               Text(
-                                data["creator"]["name"],
+                                data["type"],
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(
-                                  color: textColor,
-                                  fontSize: 12,
+                                  color: labelColor,
+                                  fontSize: 10,
                                 ),
                               ),
+                              SizedBox(height: 2),
                               Text(
-                                data["creator"]["type"],
+                                data["location"],
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(

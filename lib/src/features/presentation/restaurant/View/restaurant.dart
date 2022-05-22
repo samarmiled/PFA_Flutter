@@ -1,25 +1,32 @@
 // ignore_for_file: deprecated_member_use, unused_element
 
 import 'package:application/src/colors/colors.dart';
-import 'package:application/src/features/presentation/order_page/View/empty.dart';
-import 'package:application/src/features/presentation/order_page/View/order_page.dart';
-import 'package:application/src/features/presentation/profile_page/View/profile_page.dart';
 import 'package:application/src/features/presentation/widgets/back_button.dart';
 
 import 'package:flutter/material.dart';
 
-class RestaurantDetailPage extends StatefulWidget {
-  const RestaurantDetailPage({Key? key}) : super(key: key);
+class RestaurantPage extends StatefulWidget {
+  const RestaurantPage({Key? key}) : super(key: key);
 
   @override
-  State<RestaurantDetailPage> createState() => _RestaurantDetailPageState();
+  State<RestaurantPage> createState() => _RestaurantPageState();
 }
 
-class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
-  int commande = 0;
+class _RestaurantPageState extends State<RestaurantPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {},
+          backgroundColor: Color.fromRGBO(255, 140, 0, 1.0),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          label: Text(
+            "Order ",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17),
+          )),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -28,7 +35,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             flexibleSpace: FlexibleSpaceBar(
               background: Stack(children: [
                 Image(
-                  image: AssetImage("assets/images/papillon.jpg"),
+                  image: AssetImage("assets/images/thediesel.png"),
                   width: double.infinity,
                   height: 350,
                   fit: BoxFit.cover,
@@ -67,22 +74,6 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   [_header(), _menuList(context), SizedBox(height: 40)]))
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => OrderPage()),
-            );
-          },
-          backgroundColor: Color.fromRGBO(255, 140, 0, 1.0),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          label: Text(
-            "Order +${commande}",
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w600, fontSize: 17),
-          )),
     );
   }
 
@@ -115,7 +106,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
           padding: EdgeInsets.symmetric(horizontal: 30.0),
           margin: EdgeInsets.symmetric(vertical: 7.0),
           child: Text(
-            'Papillon pizza by chef sousse ',
+            'The DIESEL Original Cofee Shop',
             style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -128,7 +119,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             children: [
               Icon(Icons.location_on, color: gris),
               Text(
-                "4051 Rue des Palmiers, Sousse ",
+                "Boulevard d'Alexandrie 4011 Hammam Sousse",
                 style: TextStyle(
                     color: gris, fontWeight: FontWeight.bold, fontSize: 15.0),
               ),
@@ -159,7 +150,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                 children: [
                   Icon(Icons.star, color: Colors.white, size: 19.0),
                   Text(
-                    '5',
+                    '4.2',
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
@@ -168,7 +159,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                 ],
               ),
               Text(
-                "130 Ratings ",
+                "706 Ratings ",
                 style: TextStyle(
                     color: gris, fontWeight: FontWeight.w500, fontSize: 15.0),
               )
@@ -283,7 +274,6 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
       child: Column(
         children: [
           _menuItem(context, "Pizza", "4"),
-          _sliderCards(),
           _menuItem(context, "Salades", "1"),
           _menuItem(context, "Sandwitchs", "1"),
           _menuItem(context, "Drinks", "1"),
@@ -315,22 +305,18 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
   }
 
   Widget _sliderCards() {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(15, 5, 7, 10),
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: [
-          _card("assets/images/neptune.jpg", "Pizza Neptune", "12.600dt"),
-          _card("assets/images/pizza-fruit-mer.jpg", "Pizza Fruit de mer",
-              "21.500dt"),
-          _card("assets/images/pizza4fromage.jpg", "Pizza 4 fromages", "19dt"),
-          _card("assets/images/papillonpizza.jpg", "Pizza Papillon", "26dtt"),
-        ],
-      ),
+    return Container(
+      height: 210.0,
+      padding: EdgeInsets.only(left: 20),
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+            return _card();
+          }),
     );
   }
 
-  Widget _card(String image, String item, String price) {
+  Widget _card() {
     return Container(
       margin: EdgeInsets.all(8.0),
       child: Column(
@@ -339,7 +325,8 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image(
-              image: AssetImage(image),
+              image: NetworkImage(
+                  "https://dam.savencia.com/api/wedia/dam/transform/fix635d9eidk6rrwseqxx1hm4hxuee5jn54fmie/800?t=resize&width=800"),
               width: 200,
               height: 100,
               fit: BoxFit.cover,
@@ -348,13 +335,13 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
           Container(
               margin: EdgeInsets.only(top: 10),
               child: Text(
-                item,
+                "Pizza",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
               )),
           Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                price,
+                "13dt",
                 style: TextStyle(
                     fontWeight: FontWeight.bold, color: gris, fontSize: 15.0),
               )),
@@ -372,17 +359,11 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
               ),
               Container(
                 margin: EdgeInsets.only(top: 10, left: 80),
-                child: GestureDetector(
-                  onTap: () {
-                    commande = commande + 1;
-                    print(commande);
-                  },
-                  child: Image(
-                      width: 20.0,
-                      height: 20.0,
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/add.png")),
-                ),
+                child: Image(
+                    width: 20.0,
+                    height: 20.0,
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/add.png")),
               )
             ],
           )

@@ -3,21 +3,20 @@
 import 'package:application/src/colors/colors.dart';
 import 'package:flutter/material.dart';
 
-Widget categorieCard({
-  BuildContext? context,
-  double marginTop = 10.0,
-  double marginRight = 0.0,
-  double marginBottom = 0.0,
-  double marginLeft = 1.0,
-  required ImageProvider<Object> image,
-  required String title,
-  required String subtitle,
-  required String review,
-  required String ratings,
-  String buttonText = '',
-  bool? hasActionButton,
-  bool isFavourite = true,
-}) {
+Widget favouritesCard(
+    {BuildContext? context,
+    double marginTop = 15.0,
+    double marginRight = 0.0,
+    double marginBottom = 0.0,
+    double marginLeft = 0.0,
+    required ImageProvider<Object> image,
+    required String title,
+    required String subtitle,
+    required String review,
+    required String ratings,
+    String buttonText = '',
+    bool? hasActionButton,
+    bool isFavourite = true}) {
   return Container(
     margin: EdgeInsets.only(
         top: marginTop,

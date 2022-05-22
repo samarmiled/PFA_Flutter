@@ -172,7 +172,7 @@ class _HomePageState extends State<HomePage> {
               });
             },
             onTap: () {
-              Navigator.pushNamed(context, 'restaurant-detail');
+              Navigator.pushNamed(context, 'restaurant');
             },
           ),
         ),

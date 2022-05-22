@@ -5,8 +5,7 @@ var profile = {
 };
 
 List categories = [
-  {"name": "Ramen", "icon": "assets/images/category/ramen.png"},
-  {"name": "Salad", "icon": "assets/images/category/salad.png"},
+  {"name": "Salade", "icon": "assets/images/category/salad.png"},
   {"name": "Pizza", "icon": "assets/images/category/pizza.png"},
   {"name": "Ice-Cream", "icon": "assets/images/category/ice-cream.png"},
   {"name": "Hamburger", "icon": "assets/images/category/hamburger.png"},
@@ -174,43 +173,54 @@ List recipes = [
 List populars = [
   {
     "id": 100,
-    "name": "Rice Pot",
+    "name": "L’Aromate Restaurant",
     "image":
-        "https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    "price": "\$210",
-    "type": "Hot-Pot",
-    "rate": "4.5",
-    "creator": creators[0],
-    "location": "Phnom Penh",
+        "https://media-cdn.tripadvisor.com/media/photo-s/13/ec/36/f2/l-equipe-du-restaurant.jpg",
+    "type": " Pizzeria",
+    "rate": "4.3",
+    "location": "Sousse, Sahloul ",
     "is_favorited": false,
     "description":
         "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
   },
+  {
+    "id": 170,
+    "name": "The Diesel",
+    "image": "http://www.annugeo.com/images/photos/ag84-thediesel.jpg",
+    "type": " Cofee Shop",
+    "rate": "4.0",
+    "location": "4011 Hammam Sousse ",
+    "is_favorited": false,
+    "description":
+        "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
+  },
+];
+List menu = [
   {
     "id": 104,
-    "name": "Ice Cream",
+    "name": "Curry",
     "image":
-        "https://images.unsplash.com/photo-1623595119708-26b1f7300075?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+        "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
     "price": "\$180",
-    "type": "Sweet",
+    "type": "Soup",
     "rate": "4.3",
-    "creator": creators[4],
+    "creator": creators[1],
     "location": "Phnom Penh",
-    "is_favorited": true,
+    "is_favorited": false,
     "description":
         "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
   },
   {
-    "id": 102,
-    "name": "Mix Sald",
+    "id": 109,
+    "name": "King of Steak",
     "image":
-        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    "price": "\$320",
-    "type": categories[2]["name"],
-    "rate": "4.5",
-    "creator": creators[2],
+        "https://images.unsplash.com/photo-1565299715199-866c917206bb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
+    "price": "\$350",
+    "type": "Steak",
+    "rate": "4.8",
+    "creator": creators[0],
     "location": "Phnom Penh",
-    "is_favorited": false,
+    "is_favorited": true,
     "description":
         "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
   },
@@ -228,36 +238,7 @@ List populars = [
     "description":
         "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
   },
-  {
-    "id": 104,
-    "name": "Curry",
-    "image":
-        "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    "price": "\$180",
-    "type": "Soup",
-    "rate": "4.3",
-    "creator": creators[1],
-    "location": "Phnom Penh",
-    "is_favorited": false,
-    "description":
-        "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
-  },
-  {
-    "id": 105,
-    "name": "Strip Steak",
-    "image":
-        "https://images.unsplash.com/photo-1560781290-7dc94c0f8f4f?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTF8fGZhc2hpb258ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
-    "price": "\$250",
-    "type": "Steak",
-    "rate": "4.5",
-    "creator": creators[2],
-    "location": "Phnom Penh",
-    "is_favorited": false,
-    "description":
-        "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document",
-  },
 ];
-
 List recommends = [
   {
     "id": 104,

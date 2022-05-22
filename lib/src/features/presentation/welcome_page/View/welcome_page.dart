@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -65,7 +67,7 @@ class WelcomePage extends StatelessWidget {
                         'LOGIN',
                         style: TextStyle(color: Colors.white, fontSize: 15.0),
                       )
-                    ],
+                    ], 
                   ),
                 ),
               ),

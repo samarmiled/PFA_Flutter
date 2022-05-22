@@ -1,8 +1,25 @@
+// ignore_for_file: unused_local_variable, deprecated_member_use
+
+import 'dart:convert';
+
 import 'package:application/src/colors/colors.dart';
 import 'package:application/src/features/presentation/widgets/back_button.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController _fname = TextEditingController();
+  TextEditingController _lname = TextEditingController();
+  TextEditingController _phone = TextEditingController();
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +105,8 @@ class RegisterPage extends StatelessWidget {
       padding: EdgeInsets.only(left: 10.0),
       decoration: BoxDecoration(
           color: bgInputs, borderRadius: BorderRadius.circular(40.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _fname,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
             hintText: 'FirstName',
@@ -103,7 +121,8 @@ class RegisterPage extends StatelessWidget {
       padding: EdgeInsets.only(left: 10.0),
       decoration: BoxDecoration(
           color: bgInputs, borderRadius: BorderRadius.circular(40.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _lname,
         keyboardType: TextInputType.text,
         decoration: InputDecoration(
             hintText: 'LastName',
@@ -118,7 +137,8 @@ class RegisterPage extends StatelessWidget {
       padding: EdgeInsets.only(left: 10.0),
       decoration: BoxDecoration(
           color: bgInputs, borderRadius: BorderRadius.circular(40.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _phone,
         keyboardType: TextInputType.phone,
         decoration: InputDecoration(
             hintText: 'Contact Number',
@@ -133,7 +153,8 @@ class RegisterPage extends StatelessWidget {
       padding: EdgeInsets.only(left: 10.0),
       decoration: BoxDecoration(
           color: bgInputs, borderRadius: BorderRadius.circular(40.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _email,
         keyboardType: TextInputType.emailAddress,
         decoration: InputDecoration(
             hintText: 'Email Adress',
@@ -148,7 +169,8 @@ class RegisterPage extends StatelessWidget {
       padding: EdgeInsets.only(left: 10.0),
       decoration: BoxDecoration(
           color: bgInputs, borderRadius: BorderRadius.circular(40.0)),
-      child: TextField(
+      child: TextFormField(
+        controller: _password,
         keyboardType: TextInputType.visiblePassword,
         obscureText: true,
         decoration: InputDecoration(
@@ -164,7 +186,9 @@ class RegisterPage extends StatelessWidget {
       height: 45.0,
       margin: EdgeInsets.only(top: 40.0),
       child: RaisedButton(
-        onPressed: () {},
+        onPressed: () {
+          RegisterUser();
+        },
         color: Theme.of(context).accentColor,
         child: Text(
           "Sign up",
@@ -174,5 +198,42 @@ class RegisterPage extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
     );
+  }
+
+  Future RegisterUser() async {
+    var ApiURL = "http://192.168.1.10/php-auth-api-master/register.php";
+    Map<String, String> headers = {'Content-Type': 'application/json'};
+    final mapdata = jsonEncode({
+      'fname': _fname.text,
+      "lname": _lname.text,
+      "phone": _phone.text,
+      "email": _email.text,
+      "password": _password.text
+    });
+    print("JSON DATA : ${mapdata}");
+
+    var response = await http.post(
+      Uri.parse(ApiURL),
+      headers: headers,
+      body: mapdata,
+    );
+    print(response.statusCode);
+    if (response.statusCode == 200) {
+      Fluttertoast.showToast(
+          msg: "Registered successfully !",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.black,
+          textColor: Colors.white // Also possible "TOP" and "CENTER"
+          );
+      Navigator.pushNamed(context, "root_app");
+    } else
+      Fluttertoast.showToast(
+          msg: "Try Again !",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.black,
+          textColor: Colors.white // Also possible "TOP" and "CENTER"
+          );
   }
 }
